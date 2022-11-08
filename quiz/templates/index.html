@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" >
+    
+    
+</head>
+<body>
+<div class="container">
+    <div class="head">
+    <h1>Grammar Test</h1>
+    <p>Choose your answer from the options below,</p>
+    <p>You can't change the answer once selected.</p>
+    <span>No of Questions: </span><span>{{count}}</span>
+    </div>
+    <div class="qst">
+        <h5>{{qst.no}}. {{qst.qst}}?</h5>
+        <div class="ans">
+            <a type="button" class="btn btn-secondary" href="{% url 'index' %}?data=a">A. {{qst.a}}</a>
+            <a type="button" class="btn btn-secondary" href="{% url 'index' %}?data=b">B. {{qst.b}}</a>
+            <a type="button" class="btn btn-secondary" href="{% url 'index' %}?data=c">C. {{qst.c}}</a>
+            <a type="button" class="btn btn-secondary" href="{% url 'index' %}?data=d">D. {{qst.d}}</a>
+        </div>
+        <p class="mt-5">Time remaining: <span class="countdown"></span>
+            <span id="timer">
+                <span id="time"></span> Seconds      
+            </span>
+        </p>
+    </div>
+</div>
+<form id="form" method="post">{% csrf_token %}</form>
+
+<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+<script>
+
+var counter = {{qst.time}};
+var interval = setInterval(function() {
+    counter--;
+    if (counter <= 0) {
+     		clearInterval(interval);
+      	$('#timer').html("Times Up"); 
+        $('#form').submit() 
+
+        return;
+    }else{
+    	$('#time').text(counter);
+      console.log("Timer : " + counter);
+    }
+}, 1000);
+</script>
+</body>
+</html>

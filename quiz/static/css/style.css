@@ -1,0 +1,49 @@
+
+body{
+    background: rgb(214, 214, 214);
+    scroll-behavior: smooth;
+} 
+
+.head{
+    margin-top: 75px;
+}
+.head span{
+    color: rgb(2, 175, 175);
+}
+.head p{
+    line-height: 7px;
+    color: gray;
+}
+.qst{
+    padding-top: 15px;
+}
+.ans{
+    padding-top: 10px;
+}
+.ans a{
+    width: 500px;
+    text-align: left;
+    display: block;
+    margin-bottom: 10px;
+}
+.ans input{
+    width: 50%;
+}
+.tick{
+    text-align: center;
+}
+.tick img{
+    width: 50%;
+}
+.tick span{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: rgb(90, 90, 90);
+}
+
+#login-form,#register-form{
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    width: 450px;
+}
